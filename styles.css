@@ -95,10 +95,13 @@ main {
 }
 .hero h1 {
   max-width: 680px;
-  font-size: clamp(3.4rem, 9vw, 7.5rem);
+  font-size: clamp(3.2rem, 7.6vw, 6.6rem);
   line-height: 0.92;
   letter-spacing: 0;
   margin: 18px 0 26px;
+}
+.title-keep-together {
+  white-space: nowrap;
 }
 .intro {
   color: var(--muted);
@@ -190,6 +193,15 @@ main {
 }
 .caption-copy p:last-child {
   margin-bottom: 0;
+}
+.research-link {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--purple);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 .version-list {
   display: grid;
@@ -293,7 +305,7 @@ main {
     padding-top: 60px;
   }
   .hero h1 {
-    font-size: clamp(4.3rem, 19vw, 7rem);
+    font-size: clamp(3.7rem, 17vw, 6.2rem);
   }
   .counter-number {
     font-size: 8.5rem;
@@ -551,4 +563,46 @@ blockquote {
   .conclusion-section {
     padding-top: 58px;
   }
+}
+
+/* The research section uses a restrained paper-like green and black palette. */
+.research-body {
+  --research-green: #00c2af;
+  --research-black: #000000;
+  color: var(--research-black);
+}
+.research-body .brand span,
+.research-body nav a:hover,
+.research-body .site-footer a,
+.research-body .eyebrow,
+.research-body .research-subtitle,
+.research-body .study-kicker,
+.research-body .study-index,
+.research-body blockquote,
+.research-body .conclusion-section p:last-child {
+  color: var(--research-green);
+}
+.research-body .study-card,
+.research-body .study-orange,
+.research-body .study-purple {
+  border-top-color: var(--research-green);
+  background: rgba(0, 194, 175, 0.045);
+}
+.research-body .study-orange .study-index,
+.research-body .study-purple .study-index,
+.research-body .study-orange .study-kicker {
+  color: var(--research-green);
+}
+.research-body blockquote,
+.research-body .study-orange blockquote {
+  border-left-color: var(--research-green);
+}
+.research-body .study-content blockquote cite {
+  color: var(--muted);
+}
+.research-body .stat:nth-child(1) strong,
+.research-body .stat:nth-child(2) strong,
+.research-body .stat:nth-child(3) strong,
+.research-body .stat:nth-child(4) strong {
+  color: var(--research-green);
 }
