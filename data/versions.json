@@ -5,17 +5,17 @@
       "id": 1,
       "versionNumber": 1,
       "detectedAt": "2026-09-30T11:17:44Z",
-      "sourceUrl": "https://www.abarc.it/totem/",
-      "lastModified": "Wed, 30 Sep 2026 10:22:52 GMT",
+      "sourceUrl": "https://www.abarc.it/totem/index.fld/sheet008.htm",
+      "lastModified": "Wed, 30 Sep 2026 11:19:20 GMT",
       "etag": null,
-      "contentHash": null,
+      "contentHash": "bcd337886e2f3d99215c76842620db7adb313a3544a98aa37c43ff35b0a61c78",
       "contentType": "text/html",
-      "changeKey": "last-modified:Wed, 30 Sep 2026 10:22:52 GMT"
+      "changeKey": "content-sha256:bcd337886e2f3d99215c76842620db7adb313a3544a98aa37c43ff35b0a61c78"
     }
   ],
   "lastCheck": {
-    "checkedAt": "2026-09-30T12:54:29.508Z",
+    "checkedAt": "2026-09-30T16:58:08.880Z",
     "status": "unchanged",
-    "lastModified": "Wed, 30 Sep 2026 10:22:52 GMT"
+    "lastModified": "Wed, 30 Sep 2026 11:19:20 GMT"
   }
 }
