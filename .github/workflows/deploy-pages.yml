@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Configura GitHub Pages
+        uses: actions/configure-pages@v5
       - run: mkdir -p site/data && cp index.html styles.css app.js site/ && cp data/versions.json site/data/versions.json
       - uses: actions/upload-pages-artifact@v3
         with:
