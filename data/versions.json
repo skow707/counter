@@ -1,0 +1,21 @@
+{
+  "academicYear": "2026/27",
+  "versions": [
+    {
+      "id": 1,
+      "versionNumber": 1,
+      "detectedAt": "2026-09-30T11:17:44Z",
+      "sourceUrl": "https://www.abarc.it/totem/",
+      "lastModified": "Wed, 30 Sep 2026 10:22:52 GMT",
+      "etag": null,
+      "contentHash": null,
+      "contentType": "text/html",
+      "changeKey": "last-modified:Wed, 30 Sep 2026 10:22:52 GMT"
+    }
+  ],
+  "lastCheck": {
+    "checkedAt": "2026-09-30T11:17:44Z",
+    "status": "changed",
+    "lastModified": "Wed, 30 Sep 2026 10:22:52 GMT"
+  }
+}
