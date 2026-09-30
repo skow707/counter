@@ -1,6 +1,6 @@
 # ABARC Orario Counter
 
-Un contatore leggermente ironico per la storia delle versioni dell'orario ABARC, pubblicato come GitHub Page.
+Un contatore leggermente ironico per la storia delle versioni dell'orario ABARC, pubblicato come GitHub Page. È volutamente semplice: `index.html` legge `data/versions.json` e mostra il registro.
 
 ## Idea
 
@@ -15,20 +15,21 @@ Se il server non invia `Last-Modified`, il controllo usa `ETag`; se manca anche 
 
 ## Avvio locale
 
-Richiede Node.js 20+.
+Per vedere l'anteprima locale, dalla cartella del progetto avvia un server statico:
 
 ```bash
-npm install
-npm run dev
+python3 -m http.server 8000
 ```
+
+Poi apri [http://localhost:8000](http://localhost:8000). Serve HTTP perché la pagina legge `data/versions.json` con `fetch`.
 
 Per eseguire un controllo reale:
 
 ```bash
-npm run check
+node scripts/check-schedule.mjs
 ```
 
-Non viene inserita nessuna versione iniziale inventata: `data/versions.json` è volutamente vuoto.
+La prima riga di `data/versions.json` è la prima risposta `HEAD` reale osservata il 30 settembre 2026; non sono state inserite versioni precedenti inventate.
 
 ## Pubblicazione su GitHub Pages
 
@@ -37,7 +38,7 @@ Non viene inserita nessuna versione iniziale inventata: `data/versions.json` è 
 3. In **Settings → Pages**, scegli **GitHub Actions** come sorgente.
 4. Avvia manualmente il workflow **Controlla Last-Modified ABARC** una prima volta.
 
-Il workflow `deploy-pages.yml` costruisce il sito statico e lo pubblica. Il workflow `check-schedule.yml` controlla il totem ogni 30 minuti, aggiorna lo storico e fa partire una nuova pubblicazione solo quando il file cambia.
+Il workflow `deploy-pages.yml` pubblica direttamente i file HTML/CSS/JS. Il workflow `check-schedule.yml` controlla il totem ogni 30 minuti, aggiorna `data/versions.json` e pubblica una nuova versione solo quando il file cambia.
 
 Se il repository GitHub non esiste ancora, dopo averlo creato vuoto puoi collegare questa cartella così:
 
@@ -54,10 +55,10 @@ git push -u origin main
 - Fonte primaria: [ABARC Totem](https://www.abarc.it/totem/)
 - Fonte secondaria: [Bacheca / Orari](https://www.abarc.it/bacheca/orari/)
 
-## Verifica locale
+## Struttura
 
-```bash
-npm test
-npm run lint
-npm run build
-```
+- `index.html`: interfaccia della pagina;
+- `styles.css`: stile responsive;
+- `app.js`: lettura del JSON e rendering di contatore, cronologia e dettagli;
+- `data/versions.json`: storico persistente;
+- `scripts/check-schedule.mjs`: controllo `HEAD` e aggiornamento dello storico.
