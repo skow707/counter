@@ -4,10 +4,10 @@ Un contatore leggermente ironico per la storia delle versioni dell'orario ABARC,
 
 ## Idea
 
-Ogni 30 minuti GitHub Actions fa una richiesta `HEAD` a [https://www.abarc.it/totem/](https://www.abarc.it/totem/) e legge l'header `Last-Modified`.
+Ogni 30 minuti GitHub Actions fa una richiesta `HEAD` a [https://www.abarc.it/totem/](https://www.abarc.it/totem/) e legge l'header `Last-Modified`. Poiché il totem usa frame, il controllo risolve anche il contenuto reale dell'orario e calcola un hash del testo normalizzato: il counter aumenta solo se cambia davvero quel contenuto.
 
-- se il valore è uguale all'ultimo salvato, non succede niente;
-- se cambia, viene registrata una nuova versione;
+- se il contenuto reale è uguale all'ultimo salvato, non succede niente anche se cambia l'header della pagina contenitore;
+- se il contenuto reale cambia, viene registrata una nuova versione;
 - se la richiesta fallisce, il contatore non aumenta;
 - la prima risposta valida dell'anno accademico 2026/27 diventa la versione #1.
 
