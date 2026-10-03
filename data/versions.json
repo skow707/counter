@@ -55,11 +55,22 @@
       "contentHash": "5d8a4dc59825a7e0a39e4508c2054beabf37a74c4c6b21e86400e1917b7c84c0",
       "contentType": "text/html",
       "changeKey": "content-sha256:5d8a4dc59825a7e0a39e4508c2054beabf37a74c4c6b21e86400e1917b7c84c0"
+    },
+    {
+      "id": 6,
+      "versionNumber": 6,
+      "detectedAt": "2026-10-03T07:52:47.751Z",
+      "sourceUrl": "https://www.abarc.it/totem/",
+      "lastModified": "Sat, 03 Oct 2026 05:55:01 GMT",
+      "etag": null,
+      "contentHash": "b45203aee9ecb4d76378a5b6bf7b1fc8c0b15731e8f6c78acc83f79fee98b4c3",
+      "contentType": "text/html",
+      "changeKey": "content-sha256:b45203aee9ecb4d76378a5b6bf7b1fc8c0b15731e8f6c78acc83f79fee98b4c3"
     }
   ],
   "lastCheck": {
-    "checkedAt": "2026-10-03T01:50:00.687Z",
-    "status": "unchanged",
-    "lastModified": "Fri, 02 Oct 2026 12:35:29 GMT"
+    "checkedAt": "2026-10-03T07:52:47.751Z",
+    "status": "changed",
+    "lastModified": "Sat, 03 Oct 2026 05:55:01 GMT"
   }
 }
