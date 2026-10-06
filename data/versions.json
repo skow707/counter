@@ -88,11 +88,22 @@
       "contentHash": "186df60f8337f7cbf14253fc2d709fa5d557cb7e1375faa61939d662209d3c6b",
       "contentType": "text/html",
       "changeKey": "content-sha256:186df60f8337f7cbf14253fc2d709fa5d557cb7e1375faa61939d662209d3c6b"
+    },
+    {
+      "id": 9,
+      "versionNumber": 9,
+      "detectedAt": "2026-10-06T23:41:44.432Z",
+      "sourceUrl": "https://www.abarc.it/totem/index.fld/sheet001.html",
+      "lastModified": "Tue, 06 Oct 2026 21:39:39 GMT",
+      "etag": null,
+      "contentHash": "c138c242b01aec0a8182d48919779214a0d34a147d24e84cb3a237e3fd5d2351",
+      "contentType": "text/html",
+      "changeKey": "content-sha256:c138c242b01aec0a8182d48919779214a0d34a147d24e84cb3a237e3fd5d2351"
     }
   ],
   "lastCheck": {
-    "checkedAt": "2026-10-06T19:45:15.803Z",
-    "status": "unchanged",
-    "lastModified": "Sun, 04 Oct 2026 22:07:06 GMT"
+    "checkedAt": "2026-10-06T23:41:44.432Z",
+    "status": "changed",
+    "lastModified": "Tue, 06 Oct 2026 21:39:39 GMT"
   }
 }
