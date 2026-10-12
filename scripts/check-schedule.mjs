@@ -54,7 +54,17 @@ async function request(url, method) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
-    const response = await fetch(url, { method, redirect: "follow", signal: controller.signal, headers: { "user-agent": "ABARC-Orario-Counter/1.0", accept: "text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.7" } });
+    const response = await fetch(url, {
+      method,
+      redirect: "follow",
+      signal: controller.signal,
+      headers: {
+        "user-agent": "ABARC-Orario-Counter/1.0",
+        accept: "text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.7",
+        "cache-control": "no-cache, no-store, max-age=0",
+        pragma: "no-cache"
+      }
+    });
     if (!response.ok) throw new Error(`HTTP ${response.status} da ${url}`);
     return response;
   } finally { clearTimeout(timer); }
