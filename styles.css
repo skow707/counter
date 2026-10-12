@@ -154,6 +154,20 @@ main {
   color: #fff;
   background: var(--ink);
 }
+.button.primary:hover {
+  border-color: var(--purple);
+  background: var(--purple);
+}
+.actions .button:not(.primary) {
+  border-color: var(--orange);
+  color: var(--black);
+  background: var(--orange);
+}
+.actions .button:not(.primary):hover {
+  border-color: var(--black);
+  color: #fff;
+  background: var(--black);
+}
 .button:hover {
   transform: translateY(-1px);
 }
