@@ -159,14 +159,14 @@ main {
   background: var(--purple);
 }
 .actions .button:not(.primary) {
-  border-color: var(--orange);
+  border-color: var(--ink);
   color: var(--black);
-  background: var(--orange);
+  background: transparent;
 }
 .actions .button:not(.primary):hover {
-  border-color: var(--black);
-  color: #fff;
-  background: var(--black);
+  border-color: var(--orange);
+  color: var(--orange);
+  background: transparent;
 }
 .button:hover {
   transform: translateY(-1px);
