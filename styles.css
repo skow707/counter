@@ -195,13 +195,20 @@ main {
   margin-bottom: 0;
 }
 .research-link {
-  display: inline-block;
-  margin-top: 4px;
-  color: var(--purple);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 8px;
+  padding: 0 16px;
+  border: 1px solid var(--purple);
+  background: var(--purple);
+  color: #fff;
   font-weight: 800;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
+  text-decoration: none;
+}
+.research-link:hover {
+  background: var(--black);
+  border-color: var(--black);
 }
 .version-list {
   display: grid;
