@@ -114,7 +114,18 @@
     {
       "id": 11,
       "versionNumber": 11,
-      "detectedAt": "2026-10-12T07:48:17.192Z",
+      "detectedAt": "2026-10-11T21:38:00+02:00",
+      "sourceUrl": "https://www.abarc.it/totem/index.fld/sheet001.html",
+      "lastModified": "Sun, 11 Oct 2026 19:38:00 GMT",
+      "etag": null,
+      "contentHash": null,
+      "contentType": "text/html",
+      "changeKey": "manual-correction:2026-10-11T21:38:00+02:00"
+    },
+    {
+      "id": 12,
+      "versionNumber": 12,
+      "detectedAt": "2026-10-12T09:37:00+02:00",
       "sourceUrl": "https://www.abarc.it/totem/index.fld/sheet001.html",
       "lastModified": "Mon, 12 Oct 2026 07:36:46 GMT",
       "etag": null,
