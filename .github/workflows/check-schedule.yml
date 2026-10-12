@@ -1,8 +1,13 @@
 name: Controlla Last-Modified ABARC
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/check-schedule.mjs"
+      - ".github/workflows/check-schedule.yml"
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "7,37 * * * *"
   workflow_dispatch:
 
 permissions:
