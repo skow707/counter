@@ -7,7 +7,7 @@ on:
       - "scripts/check-schedule.mjs"
       - ".github/workflows/check-schedule.yml"
   schedule:
-    - cron: "7,37 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
 
 permissions:
