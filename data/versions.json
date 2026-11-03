@@ -220,11 +220,24 @@
       "contentHash": "e0893af4e60df0f484101410a52c1e5af88ae9bc213fa9f3b2e981463be40062",
       "contentType": "text/html",
       "changeKey": "content-sha256:e0893af4e60df0f484101410a52c1e5af88ae9bc213fa9f3b2e981463be40062"
+    },
+    {
+      "id": 21,
+      "versionNumber": 21,
+      "detectedAt": "2026-11-03T14:43:49.174Z",
+      "sourceUrl": "https://www.abarc.it/wp-content/uploads/2026/11/20271101.2-calendario2026.pdf",
+      "lastModified": "Sun, 01 Nov 2026 22:13:50 GMT",
+      "etag": null,
+      "contentHash": "aff691fb8c8e1bcea6dfbf93804b7ec15c99b66a02878247e6d8277616d1f717",
+      "contentType": "application/pdf",
+      "changeKey": "content-sha256:aff691fb8c8e1bcea6dfbf93804b7ec15c99b66a02878247e6d8277616d1f717",
+      "primaryContentHash": "e0893af4e60df0f484101410a52c1e5af88ae9bc213fa9f3b2e981463be40062",
+      "secondaryContentHash": "35be1ed0d3ce32904cf8ec5fd7a9ebe46e118106c6e149a142984d80446d295c"
     }
   ],
   "lastCheck": {
-    "checkedAt": "2026-11-03T07:58:15.241Z",
-    "status": "unchanged",
-    "lastModified": "Sun, 01 Nov 2026 22:15:17 GMT"
+    "checkedAt": "2026-11-03T14:43:49.174Z",
+    "status": "changed",
+    "lastModified": "Sun, 01 Nov 2026 22:13:50 GMT"
   }
 }
