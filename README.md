@@ -4,7 +4,7 @@ Un contatore leggermente ironico per la storia delle versioni dell'orario ABARC,
 
 ## Idea
 
-Ogni 30 minuti GitHub Actions fa una richiesta `HEAD` a [https://www.abarc.it/totem/](https://www.abarc.it/totem/) e legge l'header `Last-Modified`. Poiché il totem usa frame, il controllo risolve anche il contenuto reale dell'orario e calcola un hash del testo normalizzato: il counter aumenta solo se cambia davvero quel contenuto.
+Ogni 15 minuti GitHub Actions controlla [https://www.abarc.it/totem/](https://www.abarc.it/totem/) e la pagina ufficiale dell'orario. Il controllo risolve il contenuto reale del totem, scarica il PDF pubblicato nella bacheca e calcola due impronte SHA-256: il counter aumenta quando cambia una delle due fonti.
 
 - se il contenuto reale è uguale all'ultimo salvato, non succede niente anche se cambia l'header della pagina contenitore;
 - se il contenuto reale cambia, viene registrata una nuova versione;
@@ -38,7 +38,7 @@ La prima riga di `data/versions.json` è la prima risposta `HEAD` reale osservat
 3. In **Settings → Pages**, scegli **GitHub Actions** come sorgente.
 4. Avvia manualmente il workflow **Controlla Last-Modified ABARC** una prima volta.
 
-Il workflow `deploy-pages.yml` pubblica direttamente i file HTML/CSS/JS. Il workflow `check-schedule.yml` controlla il totem ogni 30 minuti, aggiorna `data/versions.json` e pubblica una nuova versione solo quando il file cambia.
+Il workflow `deploy-pages.yml` pubblica direttamente i file HTML/CSS/JS. Il workflow `check-schedule.yml` controlla il totem e il PDF ufficiale ogni 15 minuti, aggiorna `data/versions.json` e pubblica una nuova versione solo quando una delle fonti cambia.
 
 Se il repository GitHub non esiste ancora, dopo averlo creato vuoto puoi collegare questa cartella così:
 

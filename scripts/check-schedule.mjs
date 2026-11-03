@@ -3,6 +3,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const URL_TO_CHECK = process.env.TOTEM_URL || "https://www.abarc.it/totem/";
+const SECONDARY_URL = process.env.SECONDARY_URL || "https://www.abarc.it/orario-didattico-a-a-2026-27-aggiornato/";
 const TIMEOUT_MS = Number(process.env.CRAWLER_TIMEOUT_MS || 20000);
 const RETRIES = Number(process.env.CRAWLER_RETRIES || 3);
 const file = resolve("data/versions.json");
@@ -123,26 +124,70 @@ try {
     }
   }
   if (!sourceResponse || !contentHash) throw new Error("Nessun contenuto reale dell'orario trovato nei frame del totem");
-  const sourceUrl = sourceResponse.url || URL_TO_CHECK;
-  const lastModified = sourceResponse.headers.get("last-modified") || totemLastModified;
-  const etag = sourceResponse.headers.get("etag");
-  const changeKey = `content-sha256:${contentHash}`;
+
+  // The official bulletin can publish a new PDF independently from the totem.
+  const secondaryPageResponse = await retry(SECONDARY_URL, "GET");
+  const secondaryHtml = await secondaryPageResponse.text();
+  const secondaryPageUrl = secondaryPageResponse.url || SECONDARY_URL;
+  const secondaryPdfUrl = linkedScheduleUrls(secondaryHtml, secondaryPageUrl).find((url) => /\.pdf(?:$|[?#])/i.test(url));
+  if (!secondaryPdfUrl) throw new Error("Nessun PDF ufficiale trovato nella bacheca degli orari");
+  const secondaryResponse = await retry(secondaryPdfUrl, "GET");
+  if (!isPdf(secondaryResponse)) throw new Error(`La fonte secondaria non ha restituito un PDF: ${secondaryPdfUrl}`);
+  const secondaryBytes = new Uint8Array(await secondaryResponse.arrayBuffer());
+  if (secondaryBytes.length === 0) throw new Error("Il PDF ufficiale è vuoto");
+  const secondaryContentHash = hashBytes(secondaryBytes);
+
   const previous = data.versions.at(-1);
+  const primaryLastModified = sourceResponse.headers.get("last-modified") || totemLastModified;
+  const secondaryLastModified = secondaryResponse.headers.get("last-modified");
+  const primaryMatchesPrevious = previous?.primaryContentHash
+    ? previous.primaryContentHash === contentHash
+    : previous?.contentHash === contentHash;
+  const secondaryMatchesPrevious = previous?.secondaryContentHash === secondaryContentHash;
+  const primaryChanged = !primaryMatchesPrevious;
+  const secondaryChanged = !secondaryMatchesPrevious;
+  const unchanged = Boolean(previous?.primaryContentHash && previous?.secondaryContentHash)
+    ? !primaryChanged && !secondaryChanged
+    : false;
+  const sourceUrl = primaryChanged && secondaryChanged
+    ? `${sourceResponse.url || URL_TO_CHECK}, ${secondaryResponse.url || secondaryPdfUrl}`
+    : secondaryChanged
+      ? (secondaryResponse.url || secondaryPdfUrl)
+      : (sourceResponse.url || URL_TO_CHECK);
+  const lastModified = secondaryChanged ? secondaryLastModified : primaryLastModified;
+  const etag = secondaryChanged
+    ? secondaryResponse.headers.get("etag")
+    : sourceResponse.headers.get("etag");
+  const combinedHash = hashBytes(new TextEncoder().encode(`primary:${contentHash}\nsecondary:${secondaryContentHash}`));
+  const changeKey = `content-sha256:${combinedHash}`;
   const hasBaseline = Boolean(previous?.contentHash);
-  const unchanged = hasBaseline && previous.contentHash === contentHash;
   data.lastCheck = { checkedAt, status: unchanged ? "unchanged" : "changed", lastModified };
   if (!hasBaseline && previous) {
     previous.sourceUrl = sourceUrl;
     previous.lastModified = lastModified;
     previous.etag = etag;
-    previous.contentHash = contentHash;
+    previous.contentHash = combinedHash;
     previous.contentType = contentType;
     previous.changeKey = changeKey;
+    previous.primaryContentHash = contentHash;
+    previous.secondaryContentHash = secondaryContentHash;
     data.lastCheck.status = "unchanged";
     console.log(`Baseline aggiornata senza incrementare il counter: ${changeKey}`);
   } else if (!unchanged) {
     const versionNumber = (previous?.versionNumber || 0) + 1;
-    data.versions.push({ id: versionNumber, versionNumber, detectedAt: checkedAt, sourceUrl, lastModified, etag, contentHash, contentType, changeKey });
+    data.versions.push({
+      id: versionNumber,
+      versionNumber,
+      detectedAt: checkedAt,
+      sourceUrl,
+      lastModified,
+      etag,
+      contentHash: combinedHash,
+      contentType: secondaryChanged ? secondaryResponse.headers.get("content-type") : contentType,
+      changeKey,
+      primaryContentHash: contentHash,
+      secondaryContentHash
+    });
     console.log(`Nuova versione #${versionNumber}: ${changeKey}`);
   } else console.log(`Nessun cambiamento: ${changeKey}`);
   writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);
