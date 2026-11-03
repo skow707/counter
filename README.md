@@ -31,6 +31,8 @@ node scripts/check-schedule.mjs
 
 La prima riga di `data/versions.json` è la prima risposta `HEAD` reale osservata il 30 settembre 2026; non sono state inserite versioni precedenti inventate.
 
+Le versioni storiche ricostruite dagli header `Last-Modified` sono marcate con `reconstructed: true`; non hanno uno snapshot del contenuto. Le versioni rilevate dal crawler conservano invece le impronte SHA-256 delle fonti.
+
 ## Pubblicazione su GitHub Pages
 
 1. Crea il repository GitHub e collegalo a questa cartella.
