@@ -233,11 +233,24 @@
       "changeKey": "content-sha256:aff691fb8c8e1bcea6dfbf93804b7ec15c99b66a02878247e6d8277616d1f717",
       "primaryContentHash": "e0893af4e60df0f484101410a52c1e5af88ae9bc213fa9f3b2e981463be40062",
       "secondaryContentHash": "35be1ed0d3ce32904cf8ec5fd7a9ebe46e118106c6e149a142984d80446d295c"
+    },
+    {
+      "id": 22,
+      "versionNumber": 22,
+      "detectedAt": "2026-11-03T14:50:43.256Z",
+      "sourceUrl": "https://www.abarc.it/totem/",
+      "lastModified": "Sun, 01 Nov 2026 22:15:17 GMT",
+      "etag": null,
+      "contentHash": "eca6c68266eb6576bd35b7da5775afd1694cca11f21fa9bd29a909e5c0554703",
+      "contentType": "text/html",
+      "changeKey": "content-sha256:eca6c68266eb6576bd35b7da5775afd1694cca11f21fa9bd29a909e5c0554703",
+      "primaryContentHash": "ed32733bf373e7020e39c8c66ad41f6cc96c2e1db813aa6f93455ab828b23148",
+      "secondaryContentHash": "35be1ed0d3ce32904cf8ec5fd7a9ebe46e118106c6e149a142984d80446d295c"
     }
   ],
   "lastCheck": {
-    "checkedAt": "2026-11-03T14:43:49.174Z",
+    "checkedAt": "2026-11-03T14:50:43.256Z",
     "status": "changed",
-    "lastModified": "Sun, 01 Nov 2026 22:13:50 GMT"
+    "lastModified": "Sun, 01 Nov 2026 22:15:17 GMT"
   }
 }
