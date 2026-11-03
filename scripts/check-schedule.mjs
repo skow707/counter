@@ -38,8 +38,21 @@ function linkedScheduleUrls(html, baseUrl) {
 }
 
 function normalizeHtml(html) {
-  return html
-    .replace(/<script\b[\s\S]*?<\/script>/gi, "")
+  const scheduleData = html.replace(
+    /(<script\b[^>]*\bid\s*=\s*["']schedule-data["'][^>]*>)([\s\S]*?)(<\/script>)/gi,
+    (match, openingTag, body, closingTag) => {
+      try {
+        const payload = JSON.parse(body);
+        delete payload.generated;
+        return `${openingTag}${JSON.stringify(payload)}${closingTag}`;
+      } catch {
+        return match;
+      }
+    }
+  );
+
+  return scheduleData
+    .replace(/<script\b(?![^>]*\bid\s*=\s*["']schedule-data["'])[^>]*>[\s\S]*?<\/script>/gi, "")
     .replace(/<style\b[\s\S]*?<\/style>/gi, "")
     .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, "")
     .replace(/<[^>]+>/g, " ")
