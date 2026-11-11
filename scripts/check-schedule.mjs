@@ -112,7 +112,10 @@ try {
   const totemHtmlResponse = await retry(URL_TO_CHECK, "GET");
   const totemHtml = await totemHtmlResponse.text();
   const totemUrl = totemHtmlResponse.url || URL_TO_CHECK;
-  const candidates = [...frameUrls(totemHtml, totemUrl), ...linkedScheduleUrls(totemHtml, totemUrl), URL_TO_CHECK];
+  // Prefer the totem root when it contains the canonical embedded schedule data.
+  // This keeps the primary representation stable and avoids counting the same
+  // update twice when the site also links to an equivalent `orario.html` view.
+  const candidates = [URL_TO_CHECK, ...frameUrls(totemHtml, totemUrl), ...linkedScheduleUrls(totemHtml, totemUrl)];
   let sourceResponse;
   let contentHash;
   let contentType;
