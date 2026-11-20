@@ -357,11 +357,24 @@
       "changeKey": "content-sha256:5ac0c2911c0de6b8bcf6cbf7bf2d08508eeed1bff769ce2686207cff08ced989",
       "primaryContentHash": "64922aba2e5f4f7f843e1b39f8645f7d7ec2322fa933f6c553aac7d5b219460c",
       "secondaryContentHash": "43400c45db50e792dd3aa5c1cad81f6b143d57aef04d3dce16650d0850b8aa47"
+    },
+    {
+      "id": 32,
+      "versionNumber": 32,
+      "detectedAt": "2026-11-20T01:07:58.085Z",
+      "sourceUrl": "https://www.abarc.it/totem/, https://www.abarc.it/wp-content/uploads/2026/11/20261119-calendario2026.pdf",
+      "lastModified": "Thu, 19 Nov 2026 16:41:39 GMT",
+      "etag": null,
+      "contentHash": "5dbafbc2242356b80661e4ae481b16af8ba601da92754e811d4beef055019863",
+      "contentType": "application/pdf",
+      "changeKey": "content-sha256:5dbafbc2242356b80661e4ae481b16af8ba601da92754e811d4beef055019863",
+      "primaryContentHash": "9e7c4fcb2aeca954920ed5e21fa59473811ba865522efb76c4d26ccb4ba8cc55",
+      "secondaryContentHash": "e7f44b013ea083222d69562240d516dcea651c02e9f5704a6f14103d24e84693"
     }
   ],
   "lastCheck": {
-    "checkedAt": "2026-11-19T10:04:56.423Z",
-    "status": "unchanged",
-    "lastModified": "Fri, 13 Nov 2026 09:31:09 GMT"
+    "checkedAt": "2026-11-20T01:07:58.085Z",
+    "status": "changed",
+    "lastModified": "Thu, 19 Nov 2026 16:41:39 GMT"
   }
 }
